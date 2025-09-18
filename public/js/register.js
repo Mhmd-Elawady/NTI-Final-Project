@@ -1,4 +1,4 @@
-// Form validation before submission
+
 document.getElementById('register-form').addEventListener('submit', function(event) {
   const name = document.getElementById('name').value.trim();
   const email = document.getElementById('email').value.trim();
@@ -33,8 +33,7 @@ document.getElementById('register-form').addEventListener('submit', function(eve
     return;
   }
 
-  // Let the form submit to Laravel backend
-  // The backend will handle user creation and redirect
+ 
 });
 
 

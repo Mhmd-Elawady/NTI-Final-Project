@@ -9,7 +9,7 @@ class EnrollmentsTableSeeder extends Seeder
 {
     public function run(): void
     {
-        // مسح أي بيانات قديمة
+        
         DB::table('enrollments')->delete();
 
         DB::table('enrollments')->insert([

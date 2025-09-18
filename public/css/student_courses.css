@@ -1,0 +1,272 @@
+
+body {
+  background: linear-gradient(135deg, #e9ecef 0%, #f4f6f9 100%);
+  min-height: 100vh;
+  font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  overflow-x: hidden;
+  color: #1a1a1a;
+}
+
+
+.navbar {
+  background: #212529;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  padding: 1rem 1.5rem;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.navbar-brand {
+  font-weight: 700;
+  font-size: 1.6rem;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.navbar-brand:hover {
+  color: #ced4da;
+  transform: scale(1.02);
+}
+
+.navbar .btn-primary {
+  background: #0d6efd;
+  border: none;
+  font-weight: 600;
+  border-radius: 0.6rem;
+  padding: 0.5rem 1.25rem;
+  transition: all 0.3s ease;
+}
+
+.navbar .btn-primary:hover {
+  background: #0a58ca;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(13, 110, 253, 0.3);
+}
+
+.navbar .btn-outline-light {
+  border: 2px solid #fff;
+  color: #fff;
+  font-weight: 600;
+  border-radius: 0.6rem;
+  padding: 0.5rem 1.25rem;
+  transition: all 0.3s ease;
+}
+
+.navbar .btn-outline-light:hover {
+  background: #fff;
+  color: #212529;
+  box-shadow: 0 3px 10px rgba(255, 255, 255, 0.3);
+}
+
+.navbar .btn-danger {
+  border-radius: 0.6rem;
+  font-weight: 600;
+  padding: 0.5rem 1.25rem;
+  background: #dc3545;
+  border: none;
+  transition: all 0.3s ease;
+}
+
+.navbar .btn-danger:hover {
+  background: #b02a37;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(220, 53, 69, 0.3);
+}
+
+
+.container {
+  max-width: 1200px;
+  margin: 0.5rem auto;
+  padding: 0 1.5rem;
+}
+
+
+h3 {
+  font-weight: 700;
+  font-size: 1.8rem;
+  color: #1a1a1a;
+  margin-bottom: 1.5rem;
+  animation: slideIn 0.6s ease-out;
+}
+
+
+.alert {
+  border-radius: 0.75rem;
+  font-size: 0.95rem;
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+  animation: fadeIn 0.5s ease-out;
+}
+
+.alert-success {
+  background: #d1e7dd;
+  color: #0f5132;
+  border: 1px solid #badbcc;
+}
+
+.alert-danger {
+  background: #f8d7da;
+  color: #842029;
+  border: 1px solid #f5c2c7;
+}
+
+.alert-info {
+  background: #cff4fc;
+  color: #055160;
+  border: 1px solid #b6effb;
+  font-size: 1rem;
+  padding: 1.5rem;
+  text-align: center;
+}
+
+
+.card {
+  border: none;
+  border-radius: 0.75rem;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  animation: fadeIn 0.8s ease-out;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.card-body {
+  padding: 1.5rem;
+}
+
+.card-title {
+  font-weight: 600;
+  font-size: 1.25rem;
+  color: #1a1a1a;
+  margin-bottom: 0.75rem;
+}
+
+.card-text {
+  font-size: 0.9rem;
+  color: #4b5563;
+  line-height: 1.5;
+}
+
+.text-muted {
+  font-size: 0.85rem;
+  color: #6b7280;
+}
+
+.text-muted strong {
+  color: #374151;
+}
+
+
+.btn-primary {
+  border-radius: 0.6rem;
+  font-weight: 600;
+  padding: 0.6rem;
+  background: #0d6efd;
+  border: none;
+  transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+  background: #0a58ca;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(13, 110, 253, 0.3);
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+}
+
+.btn-primary:focus {
+  outline: 2px solid #0d6efd;
+  outline-offset: 3px;
+}
+
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+
+@media (max-width: 768px) {
+  .container {
+    margin: 1.5rem 0.5rem;
+    padding: 0 1rem;
+  }
+
+  h3 {
+    font-size: 1.5rem;
+  }
+
+  .card {
+    margin-bottom: 1rem;
+  }
+
+  .card-body {
+    padding: 1.25rem;
+  }
+
+  .card-title {
+    font-size: 1.15rem;
+  }
+
+  .btn-primary {
+    padding: 0.5rem;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .navbar-brand {
+    font-size: 1.3rem;
+  }
+
+  .navbar .btn {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.85rem;
+    margin-right: 0.5rem;
+  }
+
+  .col-md-4 {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+}
+
+
+.navbar .btn-primary:focus,
+.navbar .btn-outline-light:focus,
+.navbar .btn-danger:focus {
+  outline: 2px solid #fff;
+  outline-offset: 3px;
+}
+
+.card:focus-within {
+  outline: 2px solid #0d6efd;
+  outline-offset: 2px;
+}

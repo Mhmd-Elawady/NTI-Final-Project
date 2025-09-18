@@ -13,11 +13,11 @@ return new class extends Migration
     {
         Schema::create('courses', function (Blueprint $table) {
             $table->id();
-            $table->string('title'); // عنوان الكورس
-            $table->text('description'); // وصف الكورس
-            $table->date('start_date'); // تاريخ بداية الكورس
-            $table->integer('max_students'); // عدد الطلاب المسموح
-            $table->foreignId('instructor_id')->constrained('users')->onDelete('cascade'); // ربط بالمدرب
+            $table->string('title'); 
+            $table->text('description'); 
+            $table->date('start_date'); 
+            $table->integer('max_students');  
+            $table->foreignId('instructor_id')->constrained('users')->onDelete('cascade'); 
             $table->timestamps();
         });
     }

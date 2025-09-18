@@ -1,4 +1,4 @@
-// Form validation before submission
+
 document.getElementById('login-form').addEventListener('submit', function(event) {
   const email = document.getElementById('email').value.trim();
   const password = document.getElementById('password').value.trim();
@@ -15,8 +15,7 @@ document.getElementById('login-form').addEventListener('submit', function(event)
     return;
   }
 
-  // Let the form submit to Laravel backend
-  // The backend will handle authentication and redirect
+
 });
 
 function showAlert(message, type) {

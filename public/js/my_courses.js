@@ -1,76 +1,70 @@
-
 document.addEventListener('DOMContentLoaded', () => {
   loadCourses();
 });
 
-
 function loadCourses() {
-  const courses = JSON.parse(localStorage.getItem('courses')) || [];
+  console.log('loadCourses called');
   const coursesTbody = document.getElementById('courses-tbody');
   coursesTbody.innerHTML = '';
 
-  if (courses.length === 0) {
+  const data = Array.isArray(window.courses) ? window.courses : [];
+  console.log('Data to process:', data);
+
+  if (data.length === 0) {
+    console.log('No courses found, showing empty message');
     coursesTbody.innerHTML = '<tr><td colspan="4" class="text-center">No courses available.</td></tr>';
     return;
   }
 
-  courses.forEach(course => {
- 
-    if (!course.id) {
-      course.id = generateId();
-    }
+  console.log('Processing', data.length, 'courses');
+  data.forEach((course, index) => {
+    console.log(`Processing course ${index}:`, course);
+    const id = course.id;
+    const title = course.title ?? '';
+    const startDate = course.start_date ?? '';
+    const maxStudents = course.max_students ?? '';
+
+    const csrfToken = document.querySelector('meta[name="csrf-token"]')?.getAttribute('content') || '';
 
     coursesTbody.innerHTML += `
-      <tr data-course-id="${course.id}">
-        <td>${course.title}</td>
-        <td>${course.startDate}</td>
-        <td>${course.maxStudents}</td>
+      <tr data-course-id="${id}">
+        <td>${title}</td>
+        <td>${startDate}</td>
+        <td>${maxStudents}</td>
         <td>
-          <a href="/edit_course/${course.id}" class="btn btn-sm btn-warning">Edit</a>
-          <a href="/course_students?courseId=${course.id}" class="btn btn-sm btn-info">Students</a>
-          <button class="btn btn-sm btn-danger delete-btn">Delete</button>
+          <a href="/edit_course/${id}" class="btn btn-sm btn-warning">Edit</a>
+          <a href="/course_students/${id}" class="btn btn-sm btn-info">Students</a>
+          <button class="btn btn-sm btn-danger delete-btn" data-course-id="${id}">Delete</button>
         </td>
       </tr>
     `;
   });
 
 
-  localStorage.setItem('courses', JSON.stringify(courses));
-
-
   document.querySelectorAll('.delete-btn').forEach(button => {
     button.addEventListener('click', function() {
-      const courseId = this.closest('tr').getAttribute('data-course-id');
+      const courseId = this.getAttribute('data-course-id');
       if (confirm('Are you sure you want to delete this course?')) {
-        deleteCourse(courseId);
-        this.closest('tr').remove();
-        showAlert('Course deleted successfully!', 'success');
+      
+        const form = document.createElement('form');
+        form.method = 'POST';
+        form.action = `/courses/${courseId}`;
+        
+        const csrfInput = document.createElement('input');
+        csrfInput.type = 'hidden';
+        csrfInput.name = '_token';
+        csrfInput.value = csrfToken;
+        
+        const methodInput = document.createElement('input');
+        methodInput.type = 'hidden';
+        methodInput.name = '_method';
+        methodInput.value = 'DELETE';
+        
+        form.appendChild(csrfInput);
+        form.appendChild(methodInput);
+        document.body.appendChild(form);
+        form.submit();
       }
     });
   });
-}
-
-
-function deleteCourse(courseId) {
-  let courses = JSON.parse(localStorage.getItem('courses')) || [];
-  courses = courses.filter(course => course.id !== courseId);
-  localStorage.setItem('courses', JSON.stringify(courses));
-}
-
-function generateId() {
-  return Math.random().toString(36).substr(2, 9);
-}
-
-
-function showAlert(message, type) {
-  const alertContainer = document.getElementById('alert-container');
-  alertContainer.innerHTML = `
-    <div class="alert alert-${type} alert-dismissible fade show" role="alert">
-      ${message}
-      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-    </div>
-  `;
-  setTimeout(() => {
-    alertContainer.innerHTML = '';
-  }, 3000);
 }

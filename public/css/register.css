@@ -1,0 +1,188 @@
+
+body {
+  background: linear-gradient(135deg, #0d6efd, #6610f2, #4d07be);
+  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  overflow-x: hidden;
+}
+
+
+.container {
+   background-color: transparent;
+  padding: 2rem;
+  border-radius: 1rem;
+  
+  animation: fadeIn 0.8s ease-out;
+  max-width: 400px;
+  width: 100%;
+  margin: 1rem auto;
+}
+
+
+h3 {
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  font-size: 1.75rem;
+}
+
+
+.form-label {
+  font-weight: 700;
+  color: #fffcfc;
+  margin-bottom: 0.5rem;
+  font-size: 0.95rem;
+}
+
+
+.form-control {
+  border-radius: 0.75rem;
+  padding: 0.75rem 1rem;
+  border: 1px solid #d1d5db;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  font-size: 1rem;
+  background: #f9fafb;
+}
+
+.form-control:focus {
+  border-color: #0d6efd;
+  box-shadow: 0 0 8px rgba(13, 110, 253, 0.3);
+  outline: none;
+  background: #fff;
+}
+
+
+.form-select {
+  border-radius: 0.75rem;
+  padding: 0.75rem 1rem;
+  border: 1px solid #d1d5db;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  font-size: 1rem;
+  background: #f9fafb;
+}
+
+.form-select:focus {
+  border-color: #0d6efd;
+  box-shadow: 0 0 8px rgba(13, 110, 253, 0.3);
+  outline: none;
+  background: #fff;
+}
+
+
+.register-btn{
+  border-radius: 0.75rem;
+  padding: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  background: linear-gradient(135deg, #0d6efd, #6610f2, #4d07be);
+  border: none;
+  width: 100%;
+  transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+  color: #ffffff;
+  font-weight: bold;
+}
+
+.register-btn:hover {
+    background: linear-gradient(135deg, #0d6efd, #6610f2, #4d07be);
+ color: #ffffff;
+  font-weight: bold;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(25, 135, 84, 0.3);
+}
+
+.register-btn:active {
+  transform: translateY(0);
+}
+
+.register-btn:focus {
+    background: linear-gradient(135deg, #0d6efd, #6610f2, #4d07be);
+  outline-offset: 2px;
+}
+
+a {
+  color: #3d3d3d;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+a:hover {
+  color: #ffffff;
+  text-decoration: underline;
+}
+
+a:focus {
+  outline: 2px solid #0d6efd;
+  outline-offset: 2px;
+}
+
+
+.alert {
+  border-radius: 0.75rem;
+  font-size: 0.9rem;
+  padding: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.alert-danger {
+  background: #f8d7da;
+  color: #721c24;
+  border: 1px solid #f5c6cb;
+}
+
+.alert-success {
+  background: #d4edda;
+  color: #155724;
+  border: 1px solid #c3e6cb;
+}
+
+.alert ul {
+  padding-left: 1.25rem;
+  margin-bottom: 0;
+}
+
+.alert li {
+  margin-bottom: 0.25rem;
+}
+
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+@media (max-width: 576px) {
+  .container {
+    padding: 1.5rem;
+    margin: 0.5rem;
+  }
+
+  h3 {
+    font-size: 1.5rem;
+  }
+
+  .form-control,
+  .form-select,
+  .btn-success {
+    font-size: 0.9rem;
+  }
+}
+
+
+.form-control::placeholder,
+.form-select::placeholder {
+  color: #6b7280;
+  opacity: 0.8;
+}

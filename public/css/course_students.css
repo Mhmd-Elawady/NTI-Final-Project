@@ -1,0 +1,133 @@
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background: #f4f6f9;
+  min-height: 100vh;
+  color: #212529;
+  line-height: 1.6;
+}
+
+h3 {
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 25px;
+  text-align: center;
+}
+
+
+.navbar {
+  background: linear-gradient(135deg, #0d6efd, #6610f2) !important;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
+  padding: 0.8rem 1rem;
+}
+
+.navbar-brand {
+  font-weight: bold;
+  font-size: 1.4rem;
+}
+
+.navbar .btn {
+  font-weight: 500;
+  border-radius: 8px;
+  transition: 0.3s ease;
+}
+
+.navbar .btn:hover {
+  transform: translateY(-2px);
+}
+
+
+form {
+  background: #fff;
+  padding: 25px;
+  border-radius: 14px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+form label {
+  font-weight: 500;
+  margin-bottom: 6px;
+  color: #444;
+}
+
+form input {
+  border-radius: 8px;
+}
+
+form .btn-success {
+  background: linear-gradient(135deg, #0d6efd, #6610f2);
+  border: none;
+  font-weight: bold;
+  padding: 12px;
+  border-radius: 10px;
+  transition: 0.3s ease;
+}
+
+form .btn-success:hover {
+  background: linear-gradient(135deg, #6610f2, #0d6efd);
+  transform: translateY(-3px);
+}
+
+.table {
+  background: #ffffff;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+}
+
+.table thead th {
+  background-color:#0d6efd;
+  color: #fff;
+  text-align: center;
+  font-weight: 600;
+  padding: 12px;
+}
+
+.table tbody td {
+  vertical-align: middle;
+  text-align: center;
+  padding: 10px;
+  color: #555;
+}
+
+.table .btn-danger {
+  font-size: 0.85rem;
+  padding: 6px 12px;
+  border-radius: 6px;
+  transition: 0.3s ease;
+}
+
+.table .btn-danger:hover {
+  transform: scale(1.05);
+}
+
+
+.modal-content {
+  border-radius: 14px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+}
+
+.modal-header {
+  background: linear-gradient(135deg, #0d6efd, #6610f2);
+  color: #fff;
+  border-bottom: none;
+}
+
+.modal-title {
+  font-weight: bold;
+}
+
+.modal-body input {
+  border-radius: 8px;
+}
+
+.modal .btn-warning {
+  font-weight: bold;
+  border-radius: 8px;
+}

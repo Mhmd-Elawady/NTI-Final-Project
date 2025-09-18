@@ -9,7 +9,6 @@ class Course extends Model
 {
     use HasFactory;
 
-   
     protected $fillable = [
         'title',
         'description',
@@ -18,15 +17,23 @@ class Course extends Model
         'instructor_id',
     ];
 
-   
+  
     public function instructor()
     {
         return $this->belongsTo(User::class, 'instructor_id');
     }
 
-   
+     
     public function enrollments()
     {
         return $this->hasMany(Enrollment::class);
     }
+
+    
+public function students()
+{
+    return $this->belongsToMany(User::class, 'enrollments', 'course_id', 'user_id')
+                ->withTimestamps();
+}
+
 }

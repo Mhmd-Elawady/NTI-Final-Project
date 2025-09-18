@@ -3,17 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>📘 CoursePlatform</title>
+  <title> CoursePlatform</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-  {{-- CSS الخاص بالمشروع --}}
-  <link rel="stylesheet" href="{{ asset('css/home.css') }}">
+  <link rel="stylesheet" href="{{ asset('css/edit_course.css') }}">
 </head>
 <body>
   
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container">
-      {{-- بدل index.html بخليها route --}}
-      <a class="navbar-brand" href="{{ route('home') }}">📘 CoursePlatform</a>
+      <a class="navbar-brand" href="{{ route('home') }}"> CoursePlatform</a>
       <div>
         <a href="{{ route('instructor.dashboard') }}" class="btn btn-outline-light">Dashboard</a>
         <a href="{{ route('logout') }}" class="btn btn-danger ms-2">Logout</a>
@@ -25,7 +23,6 @@
     <h3>Edit Course</h3>
     <div id="alert-container"></div> 
 
-    {{-- الفورم بتاع التعديل --}}
     <form id="edit-course-form" method="POST" action="{{ route('courses.update', $course->id) }}">
       @csrf
       @method('PUT')
@@ -56,7 +53,6 @@
     </form>
   </div>
  
-
     <script src="{{ asset('js/edit_course.js') }}"></script>
 </body>
 </html>

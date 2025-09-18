@@ -3,30 +3,70 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>📘 CoursePlatform</title>
+  <title> CoursePlatform - My Courses</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="{{ asset('css/student_my_courses.css') }}">
+
 </head>
 <body>
 
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container">
-      <a class="navbar-brand" href="{{ url('/') }}">📘 CoursePlatform</a>
+      <a class="navbar-brand" href="{{ route('home') }}"> CoursePlatform</a>
       <div>
-        <a href="{{ url('/student_courses') }}" class="btn btn-outline-light me-2">Available Courses</a>
-        <a href="{{ url('/student_my_courses') }}" class="btn btn-primary">My Courses</a>
-        <a href="{{ url('/login') }}" class="btn btn-danger ms-2">Logout</a>
+        <a href="{{ route('student.courses') }}" class="btn btn-outline-light me-2">Available Courses</a>
+        <a href="{{ route('student.mycourses') }}" class="btn btn-primary">My Courses</a>
+        <form action="{{ route('logout') }}" method="POST" class="d-inline">
+          @csrf
+          <button type="submit" class="btn btn-danger ms-2">Logout</button>
+        </form>
       </div>
     </div>
   </nav>
 
   <div class="container mt-5">
     <h3>My Enrolled Courses</h3>
-    <div id="alert-container" class="mb-3"></div> 
-    <div class="row" id="enrolled-courses-container">
+    
    
+    @if(session('success'))
+      <div class="alert alert-success">{{ session('success') }}</div>
+    @endif
+    @if(session('error'))
+      <div class="alert alert-danger">{{ session('error') }}</div>
+    @endif
+    
+    <div class="row">
+      @forelse($courses as $course)
+        <div class="col-md-4 mb-3">
+          <div class="card h-100">
+            <div class="card-body d-flex flex-column">
+              <h5 class="card-title">{{ $course->title }}</h5>
+              <p class="card-text flex-grow-1">{{ $course->description ?: 'No description available.' }}</p>
+              <div class="mt-auto">
+                <p class="text-muted small mb-2">
+                  <strong>Start Date:</strong> {{ $course->start_date }}<br>
+                  <strong>Max Students:</strong> {{ $course->max_students }}
+                </p>
+                <form action="{{ route('enrollments.destroy', $course->id) }}" method="POST" class="d-inline">
+                  @csrf
+                  @method('DELETE')
+                  <button type="submit" class="btn btn-danger w-100"
+                          onclick="return confirm('Are you sure you want to unenroll from this course?')">
+                    Unenroll
+                  </button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      @empty
+        <div class="col-12">
+          <div class="alert alert-info text-center">You are not enrolled in any courses yet.</div>
+        </div>
+      @endforelse
     </div>
   </div>
   
-   <script src="{{ asset('js/student_my_courses.js') }}"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
